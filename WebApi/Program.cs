@@ -1,6 +1,11 @@
+using Library.Command;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddCommandHandlers(typeof(Program));
+builder.Services.AddScoped<ICommandBus, CommandBus>();
 
 var app = builder.Build();
 
